@@ -20,6 +20,7 @@
   },
   "devDependencies": {
     "@vitejs/plugin-vue": "^4.0.0",
+    "postcss-viewport-height-correction": "^1.1.1",
     "sass": "^1.57.1",
     "unplugin-icons": "^0.15.1",
     "vite": "^4.0.0"

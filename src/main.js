@@ -1,6 +1,8 @@
 import { createApp } from 'vue'
 
 import '@/styles/app.scss'
+import '@/helpers/viewport-height-correction'
+
 import App from './App.vue'
 import MaterialIcon from '@/components/MaterialIcon.vue'
 
