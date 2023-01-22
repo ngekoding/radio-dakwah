@@ -2,6 +2,7 @@
   display: flex;
   flex-direction: column;
   height: 100vh;
+  height: var(--doc-height);
   overflow: hidden;
 
   button {
@@ -164,6 +165,10 @@
     padding: 15px;
     border-radius: 20px 20px 0 0;
     box-shadow: 0 0 50px rgba($color: #000000, $alpha: 0.1);
+    max-height: 380px;
+    min-height: 0;
+    display: flex;
+    flex-direction: column;
     &-toggle {
       display: flex;
       justify-content: center;
@@ -185,11 +190,10 @@
       color: #999;
     }
     .station-list {
+      flex: 1;
       list-style: none;
       margin-top: 15px;
-      max-height: 270px;
       overflow-y: auto;
-      // border-top: 1px solid rgba($color: #000000, $alpha: 0.05);
       padding-top: 2px;
       .station-item {
         display: flex;
