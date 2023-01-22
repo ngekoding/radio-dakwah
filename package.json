@@ -1,0 +1,27 @@
+{
+  "name": "radio-dakwah",
+  "description": "Menjaga ketenteraman hati",
+  "private": true,
+  "version": "1.0.0",
+  "type": "module",
+  "author": {
+    "name": "Nur Muhammad",
+    "email": "blog.nurmuhammad@gmail.com",
+    "url": "https://ngekoding.github.io"
+  },
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview"
+  },
+  "dependencies": {
+    "howler": "^2.2.3",
+    "vue": "^3.2.45"
+  },
+  "devDependencies": {
+    "@vitejs/plugin-vue": "^4.0.0",
+    "sass": "^1.57.1",
+    "unplugin-icons": "^0.15.1",
+    "vite": "^4.0.0"
+  }
+}

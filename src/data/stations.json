@@ -1,0 +1,44 @@
+[
+  {
+    "name": "Satu Radio",
+    "slogan": "Bersatu di Atas Al-Quran dan Sunnah",
+    "frequency": "105.4 FM",
+    "url": "https://assunnah.radio.yufid.com/;",
+    "location": "Aikmel, Indonesia"
+  },
+  {
+    "name": "Radio Rodja",
+    "slogan": "Menebar Cahaya Sunnah",
+    "frequency": "756 AM",
+    "url": "https://radioislamindonesia.com/rodja.mp3",
+    "location": "Bogor, Indonesia"
+  },
+  {
+    "name": "Rodja Bandung",
+    "slogan": "Menebar Cahaya Sunnah",
+    "frequency": "104.3 FM",
+    "url": "https://radioislamindonesia.com/rodja-bandung.mp3",
+    "location": "Bandung, Indonesia"
+  },
+  {
+    "name": "Radio Muslim",
+    "slogan": "Memurnikan Aqidah Menebarkan Sunnah",
+    "frequency": "1467 AM",
+    "url": "https://streaming.radiomuslim.com/;stream/1",
+    "location": "Yogyakarta, Indonesia"
+  },
+  {
+    "name": "Hang",
+    "slogan": "Radio Dakwah Islam",
+    "frequency": "106 FM",
+    "url": "https://185.47.62.52:8000/;",
+    "location": "Batam, Indonesia"
+  },
+  {
+    "name": "An-Nashihah",
+    "slogan": "Sakinah dengan Sunnah",
+    "frequency": "88.2 FM",
+    "url": "https://streaming.an-nashihah.com:8822/;",
+    "location": "Makassar, Indonesia"
+  }
+]
