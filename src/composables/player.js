@@ -8,6 +8,7 @@ export function usePlayer(stations) {
   const playing = ref(false)
   const playingIndex = ref(0)
   const playingStation = computed(() => playlist.value[playingIndex.value])
+  const playingState = computed(() => playingStation.value?.howl?.state())
   const playingError = ref(false)
 
   stations.forEach(station => {
@@ -49,14 +50,27 @@ export function usePlayer(stations) {
       playlist.value[soundIndex].howl = null
     })
 
-    sound.play()
+    if (sound.state() === 'unloaded') {
+      sound.load()
+      sound.on('load', () => sound.play())
+    } else {
+      sound.play()
+    }
+
     playing.value = true
     playingIndex.value = soundIndex
   }
 
   function stop() {
     playing.value = false
-    playingStation.value?.howl?.stop()
+    switch (playingState.value) {
+      case 'loaded':
+        playingStation.value.howl.stop()
+        break;
+      case 'loading':
+        playingStation.value.howl.unload()
+        break;
+    }
   }
 
   function prev() {
@@ -69,10 +83,7 @@ export function usePlayer(stations) {
 
   function togglePlay(index) {
     const soundIndex = index ?? playingIndex.value
-    if (
-      playing.value && 
-      (playlist.value[soundIndex].howl?.playing() || playingError.value)
-    ) {
+    if (playing.value) {
       stop()
     } else {
       play(soundIndex)
