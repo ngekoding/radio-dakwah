@@ -83,7 +83,7 @@ export function usePlayer(stations) {
 
   function togglePlay(index) {
     const soundIndex = index ?? playingIndex.value
-    if (playing.value) {
+    if (playing.value && playingIndex.value == soundIndex) {
       stop()
     } else {
       play(soundIndex)
