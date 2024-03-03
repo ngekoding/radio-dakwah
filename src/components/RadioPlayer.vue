@@ -21,62 +21,64 @@ const allowNext = computed(() => playingIndex.value < playlist.value.length - 1)
 
 <template>
   <div class="radio-player">
-    <header>
-     <div class="thumbnail">
-      <div class="playing-indicator" :class="{ running: playing }"></div>
-      <div class="image">
-        <img src="/thumbnail.jpg" />
+    <main>
+      <header>
+      <div class="thumbnail">
+        <div class="playing-indicator" :class="{ running: playing }"></div>
+        <div class="image">
+          <img src="/thumbnail.jpg" />
+        </div>
       </div>
-     </div>
-    </header>
-    <div class="playing">
-      <div class="playing-title">
-        <material-icon
-          name="keyboard_voice"
-          type="outlined"
-          size="14" />
-        <span>Sedang Mendengarkan</span>
+      </header>
+      <div class="playing">
+        <div class="playing-title">
+          <material-icon
+            name="keyboard_voice"
+            type="outlined"
+            size="14" />
+          <span>Sedang Mendengarkan</span>
+        </div>
+        <div class="playing-station">
+          <h3 class="playing-station--name">{{ playingStation.name + ' ' + playingStation.frequency }}</h3>
+          <p class="playing-station--slogan">{{ playingStation.slogan }}</p>
+        </div>
+        <p v-if="playingError" class="playing-error">Stasiun sedang tidak tersedia.</p>
+        <!-- <div class="playing-actions">
+          <button class="playing-actions--share">
+            <material-icon name="share" type="rounded" />
+          </button>
+          <button class="playing-actions--favorite">
+            <material-icon name="favorite_border" type="rounded" />
+          </button>
+        </div> -->
       </div>
-      <div class="playing-station">
-        <h3 class="playing-station--name">{{ playingStation.name + ' ' + playingStation.frequency }}</h3>
-        <p class="playing-station--slogan">{{ playingStation.slogan }}</p>
-      </div>
-      <p v-if="playingError" class="playing-error">Stasiun sedang tidak tersedia.</p>
-      <!-- <div class="playing-actions">
-        <button class="playing-actions--share">
-          <material-icon name="share" type="rounded" />
+      <div class="controls">
+        <button
+          class="controls--prev"
+          :disabled="!allowPrev"
+          @click="prev()">
+          <material-icon
+            name="skip_previous"
+            type="rounded"
+            size="32" />
         </button>
-        <button class="playing-actions--favorite">
-          <material-icon name="favorite_border" type="rounded" />
+        <button class="controls--play" @click="togglePlay()">
+          <material-icon
+            :name="playing ? 'stop' : 'play_arrow'"
+            type="rounded"
+            size="32" />
         </button>
-      </div> -->
-    </div>
-    <div class="controls">
-      <button
-        class="controls--prev"
-        :disabled="!allowPrev"
-        @click="prev()">
-        <material-icon
-          name="skip_previous"
-          type="rounded"
-          size="32" />
-      </button>
-      <button class="controls--play" @click="togglePlay()">
-        <material-icon
-          :name="playing ? 'stop' : 'play_arrow'"
-          type="rounded"
-          size="32" />
-      </button>
-      <button
-        class="controls--prev"
-        :disabled="!allowNext"
-        @click="next()">
-        <material-icon
-          name="skip_next"
-          type="rounded"
-          size="32" />
-      </button>
-    </div>
+        <button
+          class="controls--prev"
+          :disabled="!allowNext"
+          @click="next()">
+          <material-icon
+            name="skip_next"
+            type="rounded"
+            size="32" />
+        </button>
+      </div>
+    </main>
     <div class="playlist">
       <div class="playlist-toggle">
         <button @click="showPlaylist = !showPlaylist">

@@ -1,3 +1,7 @@
 @mixin for-small-screen-height {
   @media (max-height: 545px) { @content; }
 }
+
+@mixin landscape {
+  @media (orientation: landscape) { @content; }
+}

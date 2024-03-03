@@ -4,6 +4,10 @@
   height: 100vh;
   overflow: hidden;
 
+  @include landscape {
+    flex-direction: row;
+  }
+
   button {
     background: transparent;
     border: none;
@@ -11,170 +15,186 @@
     color: #000;
   }
 
-  header {
+  main {
     flex: 1;
     display: flex;
     flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    padding: 15px;
 
-    .thumbnail {
-      width: 150px;
-      height: 150px;
-      position: relative;
-      @include for-small-screen-height {
-        width: 100px;
-        height: 100px;
+    @include landscape {
+      order: 2;
+      flex: 60%;
+      justify-content: center;
+    }
+
+    header {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      padding: 15px;
+      
+      @include landscape {
+        flex: unset;
       }
-      .playing-indicator {
-        position: absolute;
-        width: 100%;
-        height: 100%;
-        border-radius: 50%;
-        background: conic-gradient(transparent, $colorPrimary);
-        animation: rotation 8s infinite linear;
-        animation-play-state: paused;
-        z-index: 1;
-        &.running {
-          animation-play-state: running;
+
+      .thumbnail {
+        width: 150px;
+        height: 150px;
+        position: relative;
+        @include for-small-screen-height {
+          width: 100px;
+          height: 100px;
         }
-        &::before {
-          content: '';
-          display: inline-block;
+        .playing-indicator {
+          position: absolute;
           width: 100%;
           height: 100%;
-          background: #fff;
-          transform: scale(0.92);
           border-radius: 50%;
-        }
-        &::after {
-          content: '';
-          display: inline-block;
-          position: absolute;
-          box-sizing: border-box;
-          z-index: 2;
-          width: 15px;
-          height: 15px;
-          background: #fff;
-          border: 5px solid $colorPrimary;
-          border-radius: 50%;
-          left: 49%;
-          top: -4px;
-          @include for-small-screen-height {
-            width: 12px;
-            height: 12px;
-            border-width:4px;
+          background: conic-gradient(transparent, $colorPrimary);
+          animation: rotation 8s infinite linear;
+          animation-play-state: paused;
+          z-index: 1;
+          &.running {
+            animation-play-state: running;
+          }
+          &::before {
+            content: '';
+            display: inline-block;
+            width: 100%;
+            height: 100%;
+            background: #fff;
+            transform: scale(0.92);
+            border-radius: 50%;
+          }
+          &::after {
+            content: '';
+            display: inline-block;
+            position: absolute;
+            box-sizing: border-box;
+            z-index: 2;
+            width: 15px;
+            height: 15px;
+            background: #fff;
+            border: 5px solid $colorPrimary;
+            border-radius: 50%;
+            left: 49%;
+            top: -4px;
+            @include for-small-screen-height {
+              width: 12px;
+              height: 12px;
+              border-width:4px;
+            }
           }
         }
-      }
-      .image {
-        position: absolute;
-        z-index: 2;
-        width: 120px;
-        height: 120px;
-        left: 50%;
-        top: 50%;
-        transform: translate(-50%, -50%);
-        border-radius: 50%;
-        object-fit: cover;
-        box-shadow: 0 0 5px rgba($color: #000, $alpha: 0.4);
-        overflow: hidden;
-        @include for-small-screen-height {
-          width: 80px;
-          height: 80px;
-        }
-        img {
-          width: 100%;
-          height: 100%;
-          object-fit: cover;
-        }
-        &::after {
-          content: '';
-          display: inline-block;
+        .image {
           position: absolute;
-          width: 16px;
-          height: 16px;
-          background: #fff;
-          border: 6px solid rgba($color: #fff, $alpha: 0.6);
-          background-clip: padding-box;
+          z-index: 2;
+          width: 120px;
+          height: 120px;
           left: 50%;
           top: 50%;
           transform: translate(-50%, -50%);
           border-radius: 50%;
+          object-fit: cover;
+          box-shadow: 0 0 5px rgba($color: #000, $alpha: 0.4);
+          overflow: hidden;
           @include for-small-screen-height {
-            width: 12px;
-            height: 12px;
+            width: 80px;
+            height: 80px;
+          }
+          img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+          }
+          &::after {
+            content: '';
+            display: inline-block;
+            position: absolute;
+            width: 16px;
+            height: 16px;
+            background: #fff;
+            border: 6px solid rgba($color: #fff, $alpha: 0.6);
+            background-clip: padding-box;
+            left: 50%;
+            top: 50%;
+            transform: translate(-50%, -50%);
+            border-radius: 50%;
+            @include for-small-screen-height {
+              width: 12px;
+              height: 12px;
+            }
           }
         }
       }
     }
-  }
-
-  .playing {
-    padding: 0 25px;
-    margin-top: 10xp;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    &-title {
+  
+    .playing {
+      padding: 0 25px;
+      margin-top: 10xp;
       display: flex;
+      flex-direction: column;
       justify-content: center;
       align-items: center;
-      font-size: 10px;
-      color: rgba($color: #000, $alpha: 0.3);
-      gap: 2px;
-    }
-    &-station {
-      flex: 1;
-      padding-right: 10px;
-      text-align: center;
-      margin-top: 10px;
-      &--name {
-        font-weight: normal;
+      &-title {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        font-size: 10px;
+        color: rgba($color: #000, $alpha: 0.3);
+        gap: 2px;
       }
-      &--slogan {
-        font-size: 14px;
-        color: rgba($color: #000000, $alpha: 0.4)
+      &-station {
+        flex: 1;
+        padding-right: 10px;
+        text-align: center;
+        margin-top: 10px;
+        &--name {
+          font-weight: normal;
+        }
+        &--slogan {
+          font-size: 14px;
+          color: rgba($color: #000000, $alpha: 0.4)
+        }
+      }
+      &-error {
+        color: $colorError;
+        font-size: 12px;
+        margin-top: 15px;
+      }
+      &-actions {
+        flex-shrink: 0;
+        margin-top: 25px;
+        button + button {
+          margin-left: 10px;
+        }
       }
     }
-    &-error {
-      color: $colorError;
-      font-size: 12px;
-      margin-top: 15px;
-    }
-    &-actions {
-      flex-shrink: 0;
-      margin-top: 25px;
-      button + button {
-        margin-left: 10px;
-      }
-    }
-  }
-
-  .controls {
-    display: flex;
-    padding: 25px;
-    align-items: center;
-    justify-content: center;
-    &--play {
-      width: 50px;
-      height: 50px;
+  
+    .controls {
       display: flex;
-      justify-content: center;
+      padding: 25px;
       align-items: center;
-      background: $colorPrimary;
-      background-image: linear-gradient(to bottom right, $colorPrimary, $colorPrimaryDark);
-      box-shadow: 0 0 10px rgba($color: $colorPrimary, $alpha: 0.3);
-      color: white;
-      border-radius: 50%;
-      margin: 0 15px;
-    }
-    &--prev:disabled,
-    &--next:disabled {
-      color:rgba($color: #000000, $alpha: 0.3);
-      cursor: not-allowed;
+      justify-content: center;
+      &--play {
+        width: 50px;
+        height: 50px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background: $colorPrimary;
+        background-image: linear-gradient(to bottom right, $colorPrimary, $colorPrimaryDark);
+        box-shadow: 0 0 10px rgba($color: $colorPrimary, $alpha: 0.3);
+        color: white;
+        border-radius: 50%;
+        margin: 0 15px;
+      }
+      &--prev:disabled,
+      &--next:disabled {
+        color:rgba($color: #000000, $alpha: 0.3);
+        cursor: not-allowed;
+      }
     }
   }
 
@@ -254,6 +274,19 @@
             color: #fff !important;
           }
         }
+      }
+    }
+
+    @include landscape {
+      flex: 40%;
+      order: 1;
+      max-height: unset;
+      border-radius: 0 20px 20px 0;
+      &-toggle {
+        display: none;
+      }
+      &-title {
+        padding-top: 10px;
       }
     }
   }
