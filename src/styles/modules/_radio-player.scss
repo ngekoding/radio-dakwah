@@ -206,6 +206,7 @@
     min-height: 0;
     display: flex;
     flex-direction: column;
+    min-width: 0;
     &-toggle {
       display: flex;
       justify-content: center;
@@ -245,6 +246,7 @@
         }
         &-info {
           flex: 1;
+          min-width: 0;
           .station-name {
             white-space: nowrap;
             overflow: hidden;
