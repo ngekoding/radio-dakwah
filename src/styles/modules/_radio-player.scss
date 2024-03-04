@@ -21,7 +21,7 @@
     flex-direction: column;
 
     @include landscape {
-      flex: 55%;
+      flex: 50%;
       justify-content: center;
     }
 
@@ -278,7 +278,7 @@
     }
 
     @include landscape {
-      flex: 45%;
+      flex: 50%;
       max-height: unset;
       border-radius: 20px 0 0 20px;
       &-toggle {
